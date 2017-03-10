@@ -5,6 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -40,6 +43,7 @@ public class HelloController {
 		throw new MyException("发生错误2");
 	}
 
+	@Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED)
 	@RequestMapping("/")
 	public String index(ModelMap map) {
 		stringRedisTemplate.opsForValue().set("aaa", "111");
