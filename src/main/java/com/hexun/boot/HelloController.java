@@ -10,6 +10,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hexun.exception.MyException;
 import com.hexun.mapper.UserMapper;
@@ -33,10 +36,11 @@ public class HelloController {
 	@Autowired
 	private UserMapper userMapper;
 
-	@RequestMapping("/hello")
-	public String hello() throws Exception {
-		throw new Exception("发生错误");
-	}
+	@RequestMapping(value = "/hello", method = RequestMethod.GET)
+	@ResponseBody
+	public String hello(@RequestParam String name) {
+        return "Hello " + name;
+    }
 
 	@RequestMapping("/json")
 	public String json() throws MyException {

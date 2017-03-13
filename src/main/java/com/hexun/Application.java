@@ -2,17 +2,16 @@ package com.hexun;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
- *
- * @author 程序猿DD
- * @version 1.0.0
- * @blog http://blog.didispace.com
+ * springboot 主程序
+ * @author hexun
  *
  */
 @SpringBootApplication
-@EnableAsync
+//@ImportResource({"classpath:es-job.xml"})
 public class Application {
 
 	public static void main(String[] args) {
