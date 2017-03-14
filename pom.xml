@@ -68,7 +68,12 @@
 			<artifactId>spring-boot-starter-velocity</artifactId>
 			<version>${boot.version}</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			<version>${boot.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -79,11 +84,8 @@
 			<artifactId>spring-boot-starter-redis</artifactId>
 			<version>${boot-redis.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
-			<version>${boot-mongodb.version}</version>
-		</dependency>
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-data-mongodb</artifactId> 
+			<version>${boot-mongodb.version}</version> </dependency> -->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
@@ -101,14 +103,29 @@
 		</dependency>
 	</dependencies>
 	<build>
+		<finalName>boot</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<fork>true</fork>
+					<executable>true</executable>
 				</configuration>
+				<!--生成可执行jar包部署  -->
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
+	<repositories>
+		<repository>
+			<id>spring-milestone</id>
+			<url>http://repo.spring.io/libs-release</url>
+		</repository>
+	</repositories>
 </project>

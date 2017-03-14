@@ -37,9 +37,21 @@ public class HelloController {
 	private UserMapper userMapper;
 
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
-	@ResponseBody
-	public String hello(@RequestParam String name) {
-        return "Hello " + name;
+	public String hello() {
+		return "hello";
+    }
+	
+	@RequestMapping("/")
+    public String index() {
+        return "index";
+    }
+	/**
+	 * login
+	 * @return
+	 */
+	@RequestMapping("/login")
+    public String login() {
+        return "login";
     }
 
 	@RequestMapping("/json")
@@ -48,7 +60,7 @@ public class HelloController {
 	}
 
 	@Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED)
-	@RequestMapping("/")
+	@RequestMapping("/in")
 	public String index(ModelMap map) {
 		stringRedisTemplate.opsForValue().set("aaa", "111");
 
@@ -64,9 +76,5 @@ public class HelloController {
 
 		map.addAttribute("host", u.getName());
 		return "index";
-	}
-
-	public static void main(String[] args) {
-		SpringApplication.run(HelloController.class, args);
 	}
 }
