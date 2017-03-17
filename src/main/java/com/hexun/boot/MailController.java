@@ -35,7 +35,7 @@ public class MailController {
 	public String send() {
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setFrom(username);
-		message.setTo("253972162@qq.com");
+		message.setTo("YY@qq.com");
 		message.setSubject("主题：简单邮件");
 		message.setText("测试邮件内容");
 		mailSender.send(message);
@@ -48,7 +48,7 @@ public class MailController {
 		MimeMessage mimeMessage = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
 		helper.setFrom(username);
-		helper.setTo("253972162@qq.com");
+		helper.setTo("YY@qq.com");
 		helper.setSubject("主题：嵌入静态资源");
 		helper.setText("<html><body><img src=\"cid:weixin\" ></body></html>", true);
 		FileSystemResource file = new FileSystemResource(new File("beaut.jpg"));
@@ -62,7 +62,7 @@ public class MailController {
 		MimeMessage mimeMessage = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
 		helper.setFrom(username);
-		helper.setTo("253972162@qq.com");
+		helper.setTo("YY@qq.com");
 		helper.setSubject("主题：模板邮件");
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("username", "didi");
